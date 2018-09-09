@@ -32,6 +32,12 @@ export class LoginComponent implements OnInit {
     this.windowRef = this.win.windowRef;
     this.windowRef.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha')
     this.windowRef.recaptchaVerifier.render();
+
+    let user = localStorage.getItem('bbvaUser');
+
+    if(user){
+      this.router.navigate(['/tickets', user]);
+    }
   }
 
   sendLoginCode() {
@@ -39,8 +45,6 @@ export class LoginComponent implements OnInit {
     const appVerifier = this.windowRef.recaptchaVerifier;
 
     const num = this.phoneNumber.e164;
-
-    console.log(num, appVerifier);
 
     firebase.auth().signInWithPhoneNumber(num, appVerifier)
             .then(result => {
@@ -56,10 +60,11 @@ export class LoginComponent implements OnInit {
     this.windowRef.confirmationResult
                   .confirm(this.verificationCode)
                   .then( result => {
-
-                    console.log(result.user);
+                    
                     this.user = result.user;
                     localStorage.setItem('bbvaUser', result.user.uid);
+                    this.router.navigate(['/tickets', result.user.uid])
+
 
     })
     .catch( error => console.log(error, "Incorrect code entered?"));

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { fire } from '../../services/firebase.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-historial',
@@ -11,7 +11,7 @@ export class HistorialComponent implements OnInit {
 
   tickets = [];
   id: string;
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private rou: Router) {
     this.route.params.subscribe( params => {
       this.id = params.userId;
       fire.firestore().collection("tickets").where("user", "==", this.id).get()
@@ -29,6 +29,19 @@ export class HistorialComponent implements OnInit {
 
 
   ngOnInit() {
+    let user = localStorage.getItem('bbvaUser');
 
+    if(!user){
+      this.rou.navigate(['/']);
+    }
+  }
+
+  logOut(){
+    localStorage.removeItem('bbvaUser');
+    fire.auth().signOut().then(() => {
+      this.rou.navigate(['/']);
+    }).catch(function(error) {
+      console.log(error);
+    });
   }
 }
