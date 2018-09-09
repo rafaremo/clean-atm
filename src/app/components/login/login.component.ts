@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { WindowRefService } from '../../services/window-ref.service';
 import { PhoneNumber } from '../../models/PhoneNumber';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import * as firebase from 'firebase';
 
 
@@ -24,7 +24,9 @@ export class LoginComponent implements OnInit {
 
   user: any;
 
-  constructor(private win: WindowRefService, private router: Router) {
+  numeroRecibido: any;
+
+  constructor(private win: WindowRefService, private router: Router, private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit() {
@@ -38,6 +40,10 @@ export class LoginComponent implements OnInit {
     if(user){
       this.router.navigate(['/tickets', user]);
     }
+
+    this.activatedRoute.queryParams.subscribe(params=>{
+      this.phoneNumber.line = params.phone;
+    })
   }
 
   sendLoginCode() {

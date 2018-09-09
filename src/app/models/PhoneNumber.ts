@@ -1,6 +1,6 @@
 export class PhoneNumber {
-  country: string;
-  area: string;
+  country: string = "";
+  area: string = "";
   line: string;
 
   // format phone numbers as E.164

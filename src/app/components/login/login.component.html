@@ -1,21 +1,21 @@
 <div [hidden]="user">
-    <h1>Sign In with Your Phone Number</h1>
+    <h1>BBVA Super clean ATM</h1>
   
-    <label for="phone">Phone Number</label><br>
-    <input type="text" [(ngModel)]="phoneNumber.country"  class="input" placeholder="52"    maxlength="2">
-    <input type="text" [(ngModel)]="phoneNumber.area"     class="input" placeholder="55"  maxlength="3">
-    <input type="text" [(ngModel)]="phoneNumber.line"     class="input" placeholder="32250925" maxlength="8">
+    <input type="hidden" [(ngModel)]="phoneNumber.country"  class="input" placeholder="52"    maxlength="2" value="">
+    <input type="hidden" [(ngModel)]="phoneNumber.area"     class="input" placeholder="55"  maxlength="3" value="">
+    <label for="phone">Teléfonor</label><br>
+    <input type="text" [(ngModel)]="phoneNumber.line"     class="input" placeholder="52553332250925" maxlength="14">
   
     <div id="recaptcha"></div>
   
-    <button type="button" (click)="sendLoginCode()" class="waves-effect waves-light btn">SMS Text Login Code</button>
+    <button type="button" (click)="sendLoginCode()" class="waves-effect waves-light btn">Ingresar</button>
   
     <div *ngIf="windowRef.confirmationResult">
       <hr>
-      <label for="code">Enter your Verification Code Here</label><br>
+      <label for="code">Codigo de verificación</label><br>
       <input type="text" name="code" [(ngModel)]="verificationCode">
   
-      <button type="button" (click)="verifyLoginCode()" class="waves-effect waves-light btn">Verify</button>
+      <button type="button" (click)="verifyLoginCode()" class="waves-effect waves-light btn">Verificar</button>
     </div>
 
     
