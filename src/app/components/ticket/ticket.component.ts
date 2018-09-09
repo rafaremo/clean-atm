@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import * as firebase from 'firebase';
-import { Observable } from 'rxjs';
-import * as jsPDF from 'jspdf';
 
 @Component({
   selector: 'app-ticket',
@@ -11,7 +9,7 @@ import * as jsPDF from 'jspdf';
 })
 
 export class TicketComponent implements OnInit {
-  item = {};
+  item: any = {};
   id: string;
   constructor(private route: ActivatedRoute) {
     this.route.params.subscribe( params => {
@@ -28,15 +26,7 @@ export class TicketComponent implements OnInit {
       });
     });
   }
-  descargar(){
-    let doc = new jsPDF();
-    let specialElementHandlers={
-      // '#editor': function(element=>{
-        
-      // })
-    }
-
-    }
+  
   ngOnInit() {}
 
 }
