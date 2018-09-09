@@ -1,0 +1,38 @@
+
+<div>
+  
+</div>
+
+
+
+<h2 class="header">Detalle</h2>
+
+<div class="col s12 m6">
+  
+  <div class="card horizontal">
+    <div class="card-image">
+      <img src="https://res.cloudinary.com/ironhackmex/image/upload/v1536434108/DEGRADADO_BBVA.png">
+    </div>
+    <div class="card-stacked">
+      <div class="card-content">
+        <ul>
+          <li>Cajero: {{(item)?.cajero }}</li>
+          <li>Fecha de aplicación: {{(item)?.fechaAplicacion}} </li>
+          <li>Folio: {{(item)?.folioAutorizacion}}</li>
+          <li>Monto: {{(item)?.monto | currency: 'MXN'}} </li>
+          <li>Tipo de operación: {{(item)?.tipo}} </li>
+          <li>Ubicación: {{(item)?.ubicacion}} </li> 
+        </ul>
+      </div>
+      <div class="card-action">
+        <a (click)="descargar()" >Compartir</a>
+      </div>
+    </div>
+  </div>
+</div>
+          
+
+
+
+
+

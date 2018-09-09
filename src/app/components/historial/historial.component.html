@@ -1,0 +1,24 @@
+
+<h2 class="header">Historial</h2>
+
+<div class="row">
+  <div class="col s12 m6 l4" *ngFor="let t of tickets">
+    
+    <div class="card horizontal">
+      <div class="card-image">
+        <img src="https://res.cloudinary.com/ironhackmex/image/upload/v1536434108/DEGRADADO_BBVA.png">
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+          <h4>Monto: {{t.monto | currency:'MXN'}}</h4>
+          <p>Tipo de Operación: {{t.tipo}}</p>
+          <p>Fecha de la transaccion: {{t.fechaAplicacion | date}}</p>
+        </div>
+        <div class="card-action">
+          <a [routerLink]="['/ticket', t.key]">Detalles</a>
+        </div>
+      </div>
+    </div>
+  </div>
+            
+</div>
